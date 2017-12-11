@@ -68,6 +68,7 @@ class ProgramProgressMeter(object):
 
     Keyword Arguments:
         enrollments (list): List of the user's enrollments.
+        entitlements (list): Lost of the user's entitlements.
         uuid (str): UUID identifying a specific program. If provided, the meter
             will only inspect this one program, not all programs the user may be
             engaged with.
