@@ -13,8 +13,11 @@ class CourseOverviewFactory(DjangoModelFactory):
         django_get_or_create = ('id', )
 
     version = CourseOverview.VERSION
-    pre_requisite_courses = []
     org = 'edX'
+
+    @property
+    def pre_requisite_courses(self):
+        return []
 
     @factory.lazy_attribute
     def _pre_requisite_courses_json(self):
