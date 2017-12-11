@@ -68,12 +68,11 @@ class ProgramProgressMeter(object):
 
     Keyword Arguments:
         enrollments (list): List of the user's enrollments.
-        entitlements (list): Lost of the user's entitlements.
         uuid (str): UUID identifying a specific program. If provided, the meter
             will only inspect this one program, not all programs the user may be
             engaged with.
     """
-    def __init__(self, site, user, enrollments=None, entitlements=None, uuid=None):
+    def __init__(self, site, user, enrollments=None, uuid=None):
         self.site = site
         self.user = user
 
@@ -92,7 +91,7 @@ class ProgramProgressMeter(object):
             # We can't use dict.keys() for this because the course run ids need to be ordered
             self.course_run_ids.append(enrollment_id)
 
-        self.entitlements = entitlements or list(CourseEntitlement.entitlements_for_user(self.user))
+        self.entitlements = list(CourseEntitlement.entitlements_for_user(self.user))
         self.course_uuids = [unicode(entitlement.course_uuid) for entitlement in self.entitlements]
 
         self.course_grade_factory = CourseGradeFactory()
